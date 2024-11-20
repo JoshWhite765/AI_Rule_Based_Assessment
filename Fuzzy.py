@@ -29,14 +29,14 @@ crosses['Absent'] = fuzz.trimf(crescent.universe, [0, 0, 1])
 
 # Finding the Liklihood its muslim 
 muslim = ctrl.Consequent(np.arange(0, 1.1, 0.1), 'Muslim')
-muslim['High'] = fuzz.trimf(muslim.universe, [0.5, 1, 1])
+muslim['High'] = fuzz.trimf(muslim.universe, [0.6, 0.9, 1.0])
 muslim['Medium'] = fuzz.trimf(muslim.universe, [0.3, 0.5, 0.7])
-muslim['Low'] = fuzz.trimf(muslim.universe, [0.1, 0.3, 0.5])
+muslim['Low'] = fuzz.trimf(muslim.universe, [0.0, 0.2, 0.4])
 # Finding the Liklihood its christian
 christian = ctrl.Consequent(np.arange(0, 1.1, 0.1), 'Christian')
-christian['High'] = fuzz.trimf(muslim.universe, [0.5, 1, 1])
-christian['Medium'] = fuzz.trimf(muslim.universe, [0.3, 0.5, 0.7])
-christian['Low'] = fuzz.trimf(muslim.universe, [0.1, 0.3, 0.5])
+christian['High'] = fuzz.trimf(christian.universe, [0.6, 0.9, 1.0])
+christian['Medium'] = fuzz.trimf(christian.universe, [0.3, 0.5, 0.7])
+christian['Low'] = fuzz.trimf(christian.universe, [0.0, 0.2, 0.4])
 
 # Defining the fuzzy rules for muslim
 Mus_rule1 = ctrl.Rule(green['Included'] & crescent['Included'], muslim['High'])
