@@ -29,7 +29,7 @@ crosses['Absent'] = fuzz.trimf(crescent.universe, [0, 0, 1])
 
 # Finding the Liklihood its muslim 
 muslim = ctrl.Consequent(np.arange(0, 1.1, 0.1), 'Muslim')
-muslim['High'] = fuzz.trimf(muslim.universe, [0.6, 0.9, 1.0])
+muslim['High'] = fuzz.trimf(muslim.universe, [0.6, 0.9, 1.0])0
 muslim['Medium'] = fuzz.trimf(muslim.universe, [0.3, 0.5, 0.7])
 muslim['Low'] = fuzz.trimf(muslim.universe, [0.0, 0.2, 0.4])
 # Finding the Liklihood its christian
