@@ -1,7 +1,6 @@
 import pandas as pd
 from enum import Enum
 
-
 class Religions(Enum):
     CATHOLIC = 0
     OTHER_CHRISTIAN = 1
@@ -14,6 +13,7 @@ class Religions(Enum):
 
 # Load the flag data
 data = pd.read_csv('flag.csv')
+
 
 data.columns = ["Country", "Landmass", "Zone", "Area", "Population", 
                 "Language", "Religion", "NumVBars", "NumStripes", "NumColours", 
