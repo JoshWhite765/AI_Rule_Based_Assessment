@@ -31,6 +31,7 @@ TN_COUNT = 0
 FP_COUNT = 0
 FN_COUNT = 0
 
+#calculates the classification metrics 
 def outputResults(TP, TN, FP, FN ):
     print("True positive: ", TP)
     print("True negative: ", TN)
@@ -39,8 +40,14 @@ def outputResults(TP, TN, FP, FN ):
     
     accuracy = (TP + FN) / (TP + TN + FP + FN) 
     accuracy = accuracy * 100
-
+    precision = (TP / (TP + FP)) * 100
+    recall = (TP / (TP + FN)) * 100
+    F1Score = 2 * (precision * recall) / (precision + recall)
+    
     print(f"Accuracy: {accuracy:.2f}%") 
+    print(f"Precision: {precision:.2f}%") 
+    print(f"Recall: {recall:.2f}%") 
+    print(f"F1Score: {F1Score:.2f}%") 
 
 def crescent_muslim_accuracy_check():
     # Initialize counters
