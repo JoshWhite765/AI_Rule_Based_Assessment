@@ -151,22 +151,32 @@ elif is_christian_ctrl_simulate.output['Christian'] >= 0.4:
 else:
     print ("There is a very low chance your flag is christian")
 
-
+#classication metrics 
 muslim_accuracy = (tp_mus + tn_mus) / (tp_mus + tn_mus + fp_mus + fn_mus)
-christian_accuracy = (tp_chr + tn_chr) / (tp_chr + tn_chr + fp_chr + fn_chr)
-
-precision = (tp_mus / (tp_mus + fp_mus)) * 100
-recall = (tp_mus / (tp_mus + fn_mus)) * 100
-F1Score = 2 * (precision * recall) / (precision + recall)
 muslim_accuracy = muslim_accuracy * 100
+precisionM = (tp_mus / (tp_mus + fp_mus)) * 100
+recallM = (tp_mus / (tp_mus + fn_mus)) * 100
+F1ScoreM = 2 * (precisionM * recallM) / (precisionM + recallM)
+
+
+christian_accuracy = (tp_chr + tn_chr) / (tp_chr + tn_chr + fp_chr + fn_chr)
+christian_accuracy = christian_accuracy * 100
+precisionC = (tp_chr / (tp_chr + fp_chr)) * 100
+recallC = (tp_chr / (tp_chr + fn_chr)) * 100
+F1ScoreC = 2 * (precisionC * recallC) / (precisionC + recallC)
+
+
 general_accuracy = (muslim_accuracy + christian_accuracy) / 2
+general_precision = (precisionM + precisionC) / 2
+general_recall = (recallM + recallC) / 2
+general_F1Score = (F1ScoreM + F1ScoreC) / 2
 
-print(f"Muslim Accuracy: {muslim_accuracy:.2f}%") 
-print(f"Precision: {precision:.2f}%") 
-print(f"Recall: {recall:.2f}%") 
-print(f"F1Score: {F1Score:.2f}%") 
-print ("christian accuracy is", christian_accuracy)
-
+#Outputs the classification metric 
+print(f"Accuracy: {general_accuracy:.2f}%")
+print(f"Precision: {general_precision:.2f}%")
+print(f"Recall: {general_recall:.2f}%")
+print(f"F1score: {general_F1Score:.2f}%")
 
 #print ("Muslim TP", tp_mus, "TN", tn_mus, "FP", fp_mus, "FN", fn_mus)
 #print ("Christian TP", tp_chr, "TN", tn_chr, "FP", fp_chr, "FN", fn_chr)
+
