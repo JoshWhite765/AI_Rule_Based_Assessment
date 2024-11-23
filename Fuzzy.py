@@ -159,12 +159,14 @@ precision = (tp_mus / (tp_mus + fp_mus)) * 100
 recall = (tp_mus / (tp_mus + fn_mus)) * 100
 F1Score = 2 * (precision * recall) / (precision + recall)
 muslim_accuracy = muslim_accuracy * 100
+general_accuracy = (muslim_accuracy + christian_accuracy) / 2
 
 print(f"Muslim Accuracy: {muslim_accuracy:.2f}%") 
 print(f"Precision: {precision:.2f}%") 
 print(f"Recall: {recall:.2f}%") 
 print(f"F1Score: {F1Score:.2f}%") 
-
 print ("christian accuracy is", christian_accuracy)
+
+
 #print ("Muslim TP", tp_mus, "TN", tn_mus, "FP", fp_mus, "FN", fn_mus)
 #print ("Christian TP", tp_chr, "TN", tn_chr, "FP", fp_chr, "FN", fn_chr)
