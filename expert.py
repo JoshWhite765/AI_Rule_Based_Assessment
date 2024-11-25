@@ -56,10 +56,8 @@ def crescent_muslim_accuracy_check():
     FP_COUNT = 0
     FN_COUNT = 0
     
-    # Loop through rows of data
+    # Loop through rows of data adding to the classification metrics 
     for index, row in data.iterrows():
-        # print(index)
-        # print(row)
         if (row["Crescent"] == 1):
             if (row["Religion"] == 2):
                 TP_COUNT += 1
@@ -118,7 +116,7 @@ def icon_animate_hindu_accuracy_check():
                 FP_COUNT += 1
             else:
                 FN_COUNT += 1
-
+#applies user filters
 def infer_countries(data, userFilters):
     filtered_data = data
     for feature, value in userFilters.items():
