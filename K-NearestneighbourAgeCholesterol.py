@@ -8,6 +8,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 # Load data
 data = pd.read_csv('C:/Users/josh/OneDrive - Bath Spa University/GitHub/AI_Rule_Based_Assessment/processed.hungarian.csv')
 
+#define data columns
 data.columns = ["Age", "Sex", "ChestPType", "Blood_Pressure", "Cholesterol", "BloodSugar", "electrocardio", 
                 "MaxHeartRate", "Exang", "Oldpeak", "Slope", "NumMajorVessles", "Thal", "Heart_Disease_Risk"]
 

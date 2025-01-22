@@ -1,4 +1,4 @@
-# %%
+
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
@@ -7,16 +7,14 @@ from sklearn.metrics import accuracy_score
 from sklearn.impute import SimpleImputer
 import matplotlib.pyplot as plt
 
-# %%
-# Load data
 data = pd.read_csv('processed.hungarian.csv')
 
+#Define data columns
 data.columns = ["Age", "Sex", "ChestPType", "Blood_Pressure", "Cholesterol", "BloodSugar", "electrocardio", "MaxHeartRate", "Exang", "Oldpeak", "Slope", "NumMajorVessles", "Thal", "Heart_Disease_Risk"]
 
 data.replace('?', np.nan, inplace=True)
 
-# %%
-# Impute missing cholesterol values
+#ChatGPT replace Nan with mean
 num_cols = ['Cholesterol']
 num_imputer = SimpleImputer(strategy='mean')  # Replace NaN with the mean
 data[num_cols] = num_imputer.fit_transform(data[num_cols])
@@ -24,11 +22,10 @@ data[num_cols] = num_imputer.fit_transform(data[num_cols])
 # Create binary target: 1 if age > 50, 0 otherwise
 data['Age_Above_50'] = (data['Age'] > 50).astype(int)
 
-# Define features (Cholesterol) and target (Age Above/Below 50)
+# Define features (Cholesterol) and target for (Age Above/Below 50)
 X = data[['Cholesterol']]
 y = data['Age_Above_50']
 
-# %%
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -39,23 +36,7 @@ log_reg.fit(X_train, y_train)
 
 y_pred = log_reg.predict(X_test)
 
-# %%
-# Evaluate model accuracy
-accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy: {accuracy * 100:.2f}%')
-
-# %%
-# Scatter plot to visualize Cholesterol vs Age Group (Above/Below 50)
-plt.figure(figsize=(8,6))
-plt.scatter(data['Cholesterol'], data['Age_Above_50'], c=data['Age_Above_50'], cmap='coolwarm', edgecolors='k', alpha=0.7)
-plt.title('Cholesterol vs Age Group (Above/Below 50)')
-plt.xlabel('Cholesterol')
-plt.ylabel('Age Group (0 = Below 50, 1 = Above 50)')
-plt.colorbar(label='Age Group')
-plt.show()
-
-# %%
-# Plot regression line
+# chatGPT to plot 
 plt.figure(figsize=(8,6))
 plt.scatter(data['Cholesterol'], data['Age_Above_50'], c=data['Age_Above_50'], cmap='coolwarm', edgecolors='k', alpha=0.7)
 x_vals = np.linspace(data['Cholesterol'].min(), data['Cholesterol'].max(), 100)
