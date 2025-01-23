@@ -11,6 +11,7 @@ data = pd.read_csv('processed.hungarian.csv')
 
 data.columns = ["Age", "Sex", "ChestPType", "Blood_Pressure", "Cholesterol", "BloodSugar", "electrocardio", "MaxHeartRate", "Exang", "Oldpeak", "Slope", "NumMajorVessles","Thal", "Heart_Disease_Risk"]
 
+# Replace all question mark values with Nan
 data.replace('?', np.nan, inplace=True)
 
 # ChatGPT replace NaN with mean 
@@ -19,8 +20,8 @@ num_imputer = SimpleImputer(strategy='mean')  # Replace NaN with the mean
 data[num_cols] = num_imputer.fit_transform(data[num_cols])
 
 
-X = data[['Cholesterol']]
-y = data['Heart_Disease_Risk']
+X = data[['Cholesterol']] # Feature 
+y = data['Heart_Disease_Risk'] # Target
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)

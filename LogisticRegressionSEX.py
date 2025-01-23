@@ -7,8 +7,9 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from sklearn.impute import SimpleImputer
 import matplotlib.pyplot as plt
 
+#Load the data 
 data = pd.read_csv('processed.hungarian.csv')
-
+#Define data columns
 data.columns = ["Age", "Sex", "ChestPType", "Blood_Pressure", "Cholesterol", "BloodSugar", "electrocardio", "MaxHeartRate", "Exang", "Oldpeak", "Slope", "NumMajorVessles","Thal", "Heart_Disease_Risk"]
 
 data.replace('?', np.nan, inplace=True)
@@ -47,17 +48,16 @@ print(f'F1-Score: {f1 * 100:.2f}%')
 
 #1 = male; 0 = female
 
-
 # ChatGPT to plot the regression line
 plt.figure(figsize=(8,6))
 plt.scatter(data['Cholesterol'], data['Sex'], c=data['Sex'], cmap='coolwarm', edgecolors='k', alpha=0.7)
 x_vals = np.linspace(data['Cholesterol'].min(), data['Cholesterol'].max(), 100)
-y_vals = log_reg.predict_proba(x_vals.reshape(-1, 1))[:, 1]  # Probability of sex
+y_vals = log_reg.predict_proba(x_vals.reshape(-1, 1))[:, 1]  # Probability of Gender
 plt.plot(x_vals, y_vals, color='red', label='Logistic Regression')
-plt.title('Cholesterol Vs Sex (Logistic Regression)')
+plt.title('Cholesterol Vs Gender (Logistic Regression)')
 plt.xlabel('Cholesterol')
-plt.ylabel('Sex' )
-plt.colorbar(label='Sex (1 = male; 0 = female)')
+plt.ylabel('Gender' )
+plt.colorbar(label='Gender (1 = male; 0 = female)')
 plt.legend()
 plt.show()
 
