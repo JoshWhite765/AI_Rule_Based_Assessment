@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 from sklearn.impute import SimpleImputer
 import matplotlib.pyplot as plt
 
@@ -12,6 +11,7 @@ data = pd.read_csv('processed.hungarian.csv')
 #Define data columns
 data.columns = ["Age", "Sex", "ChestPType", "Blood_Pressure", "Cholesterol", "BloodSugar", "electrocardio", "MaxHeartRate", "Exang", "Oldpeak", "Slope", "NumMajorVessles", "Thal", "Heart_Disease_Risk"]
 
+# Replace all question mark values with Nan
 data.replace('?', np.nan, inplace=True)
 
 #ChatGPT replace Nan with mean
