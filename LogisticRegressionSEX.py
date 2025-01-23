@@ -20,8 +20,8 @@ num_imputer = SimpleImputer(strategy='mean')  # Replace NaN with the mean
 data[num_cols] = num_imputer.fit_transform(data[num_cols])
 
 
-X = data[['Cholesterol']]
-y = data['Sex']
+X = data[['Cholesterol']] #Feature
+y = data['Sex'] # Target
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
